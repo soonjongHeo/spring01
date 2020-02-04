@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
+<mapper namespace="travel">
+	<select id="travelList" resultType="travelDto">
+		SELECT
+			TRAVEL_ID AS travelId,
+			TRAVEL_NAME AS travelName,
+			TRAVEL_DATE AS travelDate,
+			TRAVEL_ADDRESS AS travelAddress,
+			TRAVEL_LATITUDE AS travelLatitude,
+			TRAVEL_LONGITUDE AS travelLongitude,
+			TO_CHAR(REG_DT,'YYYY-MM-DD HH24:MI:SS') AS regDt,
+			TO_CHAR(UPD_DT,'YYYY-MM-DD HH24:MI:SS') AS updDt
+		FROM
+			TRAVEL 
+	</select>
+	
+	<insert id="travelInsert">
+		INSERT INTO TRAVEL (
+		TRAVEL_ID,
+		TRAVEL_NAME,
+		TRAVEL_DATE,
+		TRAVEL_ADDRESS,
+		TRAVEL_LATITUDE,
+		TRAVEL_LONGITUDE,
+		REG_DT,
+		UPD_DT)
+	VALUES(
+	TRAVELID.NEXTVAL,
+	#{travelName},
+	#{travelDate},
+	#{travelAddress},
+	#{travelLatitude},
+	#{travelLongitude},
+	SYSDATE,
+	'')
+	</insert>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

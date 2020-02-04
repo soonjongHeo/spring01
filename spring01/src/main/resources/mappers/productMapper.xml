@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
+<mapper namespace="product">
+	<select id="productList" resultType="productDTO">
+		SELECT
+			PRODUCT_ID AS productId,
+			PRODUCT_NAME AS productName,
+			PRICE AS price,
+			DESCRIPTION AS description,
+			PICTURE_URL AS pictureUrl
+		FROM
+			PRODUCT 
+		ORDER BY PRODUCT_ID DESC	
+	</select>
+	
+	<insert id="productInsert">
+		INSERT INTO PRODUCT (
+			PRODUCT_ID,
+			PRODUCT_NAME,
+			PRICE,
+			DESCRIPTION,
+			PICTURE_URL
+			)
+			VALUES(
+			SEQ_PRODUCT.NEXTVAL,
+			#{productName},
+			#{price},
+			#{description},
+			#{pictureUrl}
+			)
+	</insert>
+	
+	<select id="productDetail" resultType="productDTO">
+		SELECT
+			PRODUCT_ID AS productId,
+			PRODUCT_NAME AS productName,
+			PRICE AS price,
+			DESCRIPTION AS description,
+			PICTURE_URL AS pictureUrl 
+		FROM
+			PRODUCT
+			where PRODUCT_ID = #{productId}
+	</select>
+	
+	<select id="fileInfo" resultType="String">
+		SELECT
+			PICTURE_URL
+		FROM
+			PRODUCT
+			where PRODUCT_ID = #{productId}
+	</select>
+	
+	<update id="productUpdate">
+		update PRODUCT
+		set PRODUCT_NAME = #{productName}
+		,PRICE = #{price}
+		,DESCRIPTION = #{description}
+		,PICTURE_URL = #{pictureUrl}
+		where PRODUCT_ID = #{productId}
+	</update>
+	
+	<delete id="productDelete">
+		delete from PRODUCT
+		where PRODUCT_ID = #{productId}
+	</delete>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
