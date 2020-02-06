@@ -134,7 +134,7 @@
 	Hello world!  
 </h1>
 
-<P>  The time on the server is ${serverTime}. </P>
+<P>  The time on the server is ${serverTime}. w</P>
 <div class="dx-viewport demo-container">
         <div id="gridContainer"></div>
     </div>
