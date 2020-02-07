@@ -51,6 +51,13 @@ public class BoardController {
 		return mv;
 	}
 	
+	@RequestMapping(value="board/write2.do")
+	public ModelAndView write2(CommandMap commandMap) throws Exception{
+		logger.info("게시판 등록페이지2");
+		ModelAndView mv = new ModelAndView("board/board_write2");
+		return mv;
+	}
+	
 	@RequestMapping("board/insert.do")
 	public ModelAndView insert(CommandMap commandMap, HttpServletRequest request) throws Exception{
 		logger.info("게시판 등록");

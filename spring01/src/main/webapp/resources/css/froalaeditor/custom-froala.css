@@ -1,0 +1,17 @@
+.froala-editor .fr-toolbar.fr-top{
+	border-top:none;
+}
+
+.froala-editor .fr-element p {
+  margin:0;
+}
+
+.froala-editor.box-input{
+	width:auto;
+	border-radius:0;
+	box-shadow:none;
+	border:none;
+	padding:0;
+	height:auto;
+	font-size:inherit;
+}

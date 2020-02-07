@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
+<mapper namespace="admin">
+	<select id="memberList" resultType="memberDTO">
+		SELECT
+			USERID,
+			PASSWD,
+			NAME,
+			EMAIL,
+			TO_CHAR(JOIN_DATE,'YYYY-MM-DD HH24:MI:SS') AS joinDate 
+		FROM
+			MEMBER 
+		ORDER BY NAME	
+	</select>
+	
+	<insert id="insertMember">
+		INSERT INTO MEMBER (
+			USERID,
+			PASSWD,
+			NAME,
+			EMAIL
+			)
+			VALUES(
+			#{userid},
+			#{passwd},
+			#{name},
+			#{email}
+			)
+	</insert>
+	
+	<select id="viewMember" resultType="memberDTO">
+		SELECT
+			USERID,
+			PASSWD,
+			NAME,
+			EMAIL,
+			TO_CHAR(JOIN_DATE,'YYYY-MM-DD HH24:MI:SS') AS joinDate 
+		FROM
+			MEMBER
+			where USERID = #{userid}
+	</select>
+	
+	<select id="checkPw" resultType="int">
+		SELECT
+			COUNT(*)
+		FROM
+			MEMBER
+			where USERID = #{userid}
+			and PASSWD = #{passwd}
+	</select>
+	
+	<update id="updateMember">
+		update MEMBER
+		set PASSWD = #{passwd}
+		,NAME = #{name}
+		,EMAIL = #{email}
+		where USERID = #{userid}
+	</update>
+	
+	<delete id="deleteMember">
+		delete from MEMBER
+		where USERID = #{userid}
+	</delete>
+	
+	<select id="loginCheck" resultType="String">
+		SELECT
+			NAME
+		FROM
+			ADMIN
+			where USERID = #{userid}
+			and PASSWD = #{passwd}
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

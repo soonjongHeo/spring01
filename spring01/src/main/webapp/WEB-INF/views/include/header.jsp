@@ -21,9 +21,12 @@
 <script src="${path}/resources/ckeditor/ckeditor.js"></script>
 <link rel="stylesheet" type="text/css" href="${path}/resources/css/ui.css" />
 
-
 <link rel="stylesheet" href="${path}/resources/css/devexpress/dx.common.css">
 <link rel="stylesheet" href="${path}/resources/css/devexpress/dx.light.css">
+<link rel="stylesheet" href="${path}/resources/fontawesome-free-5.9.0-web/css/font-awesome.min.css">
+<link rel="stylesheet" href="${path}/resources/css/froalaeditor/froala_editor.pkgd.min.css">
+<link rel="stylesheet" href="${path}/resources/css/froalaeditor/froala_style.min.css">
+<link rel="stylesheet" href="${path}/resources/css/froalaeditor/custom-froala.css">
 
 <script src="${path}/resources/js/devexpress/cldr.min.js"></script>
 <script src="${path}/resources/js/devexpress/cldr/event.min.js"></script>
@@ -38,6 +41,7 @@
 <script src="${path}/resources/js/devexpress/localization/dx.messages.ko.js"></script>
 <script src="${path}/resources/js/devexpress/cldrdata/supplemental.js"></script>
 <script src="${path}/resources/js/devexpress/cldrdata/ko.js"></script>
+<script src="${path}/resources/js/froalaeditor/froala_editor.pkgd.min.js"></script>
 
 <script type="text/javascript">
 	function number_filter(str_value){
