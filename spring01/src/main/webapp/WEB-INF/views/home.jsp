@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
@@ -15,10 +16,10 @@
 		        dataSource: {
 		            store: {
 		                type: "odata",
-		                url: "https://js.devexpress.com/Demos/SalesViewer/odata/DaySaleDtoes",
+		                url: "/shop/product/jsonProductList.do",
 		                beforeSend: function(request) {
-		                    request.params.startDate = "2018-05-10";
-		                    request.params.endDate = "2018-05-15";
+// 		                    request.params.startDate = "2018-05-10";
+// 		                    request.params.endDate = "2018-05-15";
 		                }
 		            }
 		        },
@@ -42,53 +43,20 @@
 		        rowAlternationEnabled: true,
 		        showBorders: true,
 		        columns: [
-		            {
-		                dataField: "Product",
-		                groupIndex: 0
-		            },
-		            {
-		                dataField: "Amount",
-		                caption: "Sale Amount",
-		                dataType: "number",
-		                format: "currency",
-		                alignment: "right",
-		            },
-		            {
-		                dataField: "Discount",
-		                caption: "Discount %",
-		                dataType: "number",
-		                format: "percent",
-		                alignment: "right",
-		                allowGrouping: false,
-		                cellTemplate: discountCellTemplate,
-		                cssClass: "bullet"
-		            },
-		            {
-		                dataField: "SaleDate",
-		                dataType: "date"
-		            },
-		            {
-		                dataField: "Region",
-		                dataType: "string"
-		            },
-		            {
-		                dataField: "Sector",
-		                dataType: "string",
-		            },
-		            {
-		                dataField: "Channel",
-		                dataType: "string",
-		            },
-		            {
-		                dataField: "Customer",
-		                dataType: "string",
-		                width: 150
-		            }
+		            {dataField: "productId",groupIndex: 0},
+		            {dataField: "price",caption: "가격",dataType: "number",format: "currency",alignment: "right"},
+		            {dataField: "Discount",caption: "Discount %",dataType: "number",format: "percent",alignment: "right",allowGrouping: false,cellTemplate: discountCellTemplate,cssClass: "bullet"},
+		            {dataField: "registDate",caption: "등록날짜",dataType: "date",format:"yyyy-MM-dd"},
+		            {dataField: "productName",caption: "상품명",dataType: "string"},
+		            {dataField: "pictureUrl",caption: "이미지경로",dataType: "string"},
+		            {dataField: "description",caption: "내용",dataType: "string",width: 150}
 		        ],
 		        onContentReady: function(e) {
 		            if(!collapsed) {
 		                collapsed = true;
-		                e.component.expandRow(["EnviroCare"]);
+		                var key = e.component.getKeyByRowIndex(0);  
+		                console.log("key: " + key);
+		                e.component.expandRow([key]);
 		            }
 		        }
 		    });
@@ -134,7 +102,7 @@
 	Hello world!  
 </h1>
 
-<P>  The time on the server is ${serverTime}. w</P>
+<P>  The time on the server is ${serverTime}. </P>
 <div class="dx-viewport demo-container">
         <div id="gridContainer"></div>
     </div>

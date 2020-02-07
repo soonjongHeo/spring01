@@ -6,8 +6,11 @@ import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -15,6 +18,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.spring01.common.common.CommandMap;
@@ -120,4 +124,14 @@ public class ProductController {
 		productService.productDelete(productId);
 		return "redirect:/shop/product/list.do";
 	}
+	
+	
+	// view(jsp)로 넘어가지 않고 호출한 곳에 JSONObject를 리턴함	
+	@RequestMapping("product/jsonProductList.do")
+	@ResponseBody
+	public List<ProductDTO> getProjectList(@ModelAttribute ProductDTO productDTO, HttpServletRequest request, HttpServletResponse resonse) throws Exception{
+		System.out.println("jsonProductList");
+		return productService.jsonProductList(productDTO);
+	} 
+	
 }

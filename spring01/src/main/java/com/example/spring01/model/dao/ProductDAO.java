@@ -2,6 +2,8 @@ package com.example.spring01.model.dao;
 
 import java.util.List;
 
+import org.springframework.dao.DataAccessException;
+
 import com.example.spring01.model.dto.ProductDTO;
 
 public interface ProductDAO {
@@ -11,4 +13,5 @@ public interface ProductDAO {
 	public void productUpdate(ProductDTO dto); 
 	public void productDelete(int productId);
 	String fileInfo(int productId);
+	public List<ProductDTO> jsonProductList(ProductDTO productDTO);
 }

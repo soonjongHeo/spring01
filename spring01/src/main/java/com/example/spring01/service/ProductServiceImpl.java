@@ -4,9 +4,12 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.springframework.stereotype.Service;
 
 import com.example.spring01.model.dao.ProductDAO;
+import com.example.spring01.model.dto.CartDTO;
 import com.example.spring01.model.dto.ProductDTO;
 
 @Service
@@ -44,5 +47,11 @@ public class ProductServiceImpl implements ProductService {
 	public String fileInfo(int productId) {
 		return productDao.fileInfo(productId);
 	}
-
+	
+	/*jsonProductList 부분*/
+	@Override
+	public List<ProductDTO> jsonProductList(ProductDTO productDTO) throws Exception{
+		return productDao.jsonProductList(productDTO);
+	}
+	 
 }

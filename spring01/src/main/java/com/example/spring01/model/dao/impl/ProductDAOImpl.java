@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
 import com.example.spring01.model.dao.ProductDAO;
@@ -56,5 +57,8 @@ public class ProductDAOImpl implements ProductDAO {
 		logger.info("fileInfo called");
 		return sqlSession.selectOne("product.fileInfo", productId);
 	}
-
+	
+	public List<ProductDTO> jsonProductList(ProductDTO productDTO) throws DataAccessException{
+		return sqlSession.selectList("product.productList", productDTO);
+	}
 }
